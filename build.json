@@ -1,0 +1,10 @@
+{
+  "wheel": "temporal_customer_audiences-1.1.0-py3-none-any.whl",
+  "wheel_sha256": "8ebce3d795c1f79795d8b94bea1cb9e0bfa156a0284e1dc21fc131b72b00fc53",
+  "wheel_package_matches_source": true,
+  "validation": "verification.json",
+  "generation_fingerprints_match_source": true,
+  "delta_seals_match": true,
+  "relative_markdown_links_resolve": true,
+  "new_repository_hosted_ci": "not_observed"
+}

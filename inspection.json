@@ -1,0 +1,167 @@
+{
+  "inspected_at": "2026-09-16T01:15:57.320992+00:00",
+  "repositories": [
+    {
+      "repository": "enterprise-agent-runtime-evaluation",
+      "url": "https://github.com/rlbsem/enterprise-agent-runtime-evaluation",
+      "commit": "bcd3b9379b48b110f886fd65f87df79adab00375",
+      "commit_url": "https://github.com/rlbsem/enterprise-agent-runtime-evaluation/commit/bcd3b9379b48b110f886fd65f87df79adab00375",
+      "commit_date": "2026-09-13T19:46:09Z",
+      "checkout": "enterprise-agent-runtime-evaluation-bcd3b9379b48b110f886fd65f87df79adab00375",
+      "current_commit_workflow_runs": [
+        {
+          "id": 34778904915,
+          "name": "Runtime invariants and agent release regression",
+          "head_sha": "bcd3b9379b48b110f886fd65f87df79adab00375",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rlbsem/enterprise-agent-runtime-evaluation/actions/runs/34778904915",
+          "created_at": "2026-09-13T19:50:19Z",
+          "jobs": [
+            {
+              "name": "verify (ubuntu-latest)",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/enterprise-agent-runtime-evaluation/actions/runs/34778904915/job/103782161068"
+            },
+            {
+              "name": "verify (windows-latest)",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/enterprise-agent-runtime-evaluation/actions/runs/34778904915/job/103782161205"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "martech-migration-assurance",
+      "url": "https://github.com/rlbsem/martech-migration-assurance",
+      "commit": "1937976bb572b7f73aa786726c7aaf590d867ea5",
+      "commit_url": "https://github.com/rlbsem/martech-migration-assurance/commit/1937976bb572b7f73aa786726c7aaf590d867ea5",
+      "commit_date": "2026-09-14T02:10:05Z",
+      "checkout": "martech-migration-assurance-1937976bb572b7f73aa786726c7aaf590d867ea5",
+      "current_commit_workflow_runs": [
+        {
+          "id": 34798294212,
+          "name": "Migration preservation and cutover proof",
+          "head_sha": "1937976bb572b7f73aa786726c7aaf590d867ea5",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rlbsem/martech-migration-assurance/actions/runs/34798294212",
+          "created_at": "2026-09-14T02:10:12Z",
+          "jobs": [
+            {
+              "name": "verify (windows-latest)",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/martech-migration-assurance/actions/runs/34798294212/job/103835610514"
+            },
+            {
+              "name": "verify (ubuntu-latest)",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/martech-migration-assurance/actions/runs/34798294212/job/103835610683"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "enterprise-martech-ai-control-plane",
+      "url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane",
+      "commit": "3b7cef9cf87db0a681d4e2fb284b5736f84e6bc5",
+      "commit_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/commit/3b7cef9cf87db0a681d4e2fb284b5736f84e6bc5",
+      "commit_date": "2026-09-12T04:22:00Z",
+      "checkout": "enterprise-martech-ai-control-plane-3b7cef9cf87db0a681d4e2fb284b5736f84e6bc5",
+      "current_commit_workflow_runs": [
+        {
+          "id": 34672819022,
+          "name": "PostgreSQL governance and recovery",
+          "head_sha": "3b7cef9cf87db0a681d4e2fb284b5736f84e6bc5",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/actions/runs/34672819022",
+          "created_at": "2026-09-12T04:22:09Z",
+          "jobs": [
+            {
+              "name": "container-demo",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/actions/runs/34672819022/job/103497296548"
+            },
+            {
+              "name": "integration",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/actions/runs/34672819022/job/103497296640"
+            }
+          ]
+        },
+        {
+          "id": 34672818624,
+          "name": "PostgreSQL governance and recovery",
+          "head_sha": "3b7cef9cf87db0a681d4e2fb284b5736f84e6bc5",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/actions/runs/34672818624",
+          "created_at": "2026-09-12T04:22:09Z",
+          "jobs": [
+            {
+              "name": "container-demo",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/actions/runs/34672818624/job/103497295236"
+            },
+            {
+              "name": "integration",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/enterprise-martech-ai-control-plane/actions/runs/34672818624/job/103497295336"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "game-telemetry-analytics-engineering",
+      "url": "https://github.com/rlbsem/game-telemetry-analytics-engineering",
+      "commit": "205491319fd25c0ad107e25e0e25d2003cb2a5d6",
+      "commit_url": "https://github.com/rlbsem/game-telemetry-analytics-engineering/commit/205491319fd25c0ad107e25e0e25d2003cb2a5d6",
+      "commit_date": "2026-09-11T22:02:01Z",
+      "checkout": "game-telemetry-analytics-engineering-205491319fd25c0ad107e25e0e25d2003cb2a5d6",
+      "current_commit_workflow_runs": [
+        {
+          "id": 34652162975,
+          "name": "Validate telemetry analytics",
+          "head_sha": "205491319fd25c0ad107e25e0e25d2003cb2a5d6",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/rlbsem/game-telemetry-analytics-engineering/actions/runs/34652162975",
+          "created_at": "2026-09-11T22:02:03Z",
+          "jobs": [
+            {
+              "name": "airflow-dag",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/game-telemetry-analytics-engineering/actions/runs/34652162975/job/103436565597"
+            },
+            {
+              "name": "local-warehouse (windows-latest)",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/game-telemetry-analytics-engineering/actions/runs/34652162975/job/103436565796"
+            },
+            {
+              "name": "local-warehouse (ubuntu-latest)",
+              "status": "completed",
+              "conclusion": "success",
+              "html_url": "https://github.com/rlbsem/game-telemetry-analytics-engineering/actions/runs/34652162975/job/103436565835"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Public source snapshots and GitHub Actions status/job metadata; no CI logs or artifacts downloaded; no new tests run"
+}
