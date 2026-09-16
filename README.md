@@ -37,6 +37,18 @@ flowchart LR
   D --> S[(Synthetic membership destination)]
   O[Independent full Python evaluator] --> V[Compare membership, features, evidence and timers]
   Q --> V
+
+  classDef input fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+  classDef foundation fill:#bfdbfe,stroke:#1d4ed8,color:#0f172a,stroke-width:2px;
+  classDef process fill:#93c5fd,stroke:#1e40af,color:#0f172a,stroke-width:2px;
+  classDef control fill:#60a5fa,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
+  classDef output fill:#2563eb,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
+
+  class P,E,C,SCA,O input;
+  class L foundation;
+  class I,Q process;
+  class G,A,V control;
+  class H,D,S output;
 ```
 
 ## What is demonstrated
