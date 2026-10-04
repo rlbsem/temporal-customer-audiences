@@ -4,6 +4,26 @@
 
 This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
 
+**Independent synthetic implementation:** customer facts and destination behavior are fictional; identity and source authority are assumed inputs.
+
+```mermaid
+sequenceDiagram
+  participant F as Immutable fact revisions
+  participant E as Audience evaluator
+  participant H as Decision history
+  participant D as Synthetic destination
+  F->>E: Day 3 / known then: one qualifying event
+  E->>H: Original decision: not engaged
+  F->>E: Late second event, effective on day 3
+  E->>H: Restate day 3: engaged, preserve original
+  Note over H,D: Historical restatement cannot activate or export
+  E->>E: Advance explicit clock, reevaluate due boundaries
+  E->>H: Day 5 quiet, day 8 engagement expires
+  Note over E,D: Computed quiet needs complete declared coverage through T
+  E->>D: Eligible current additions / removals only
+  D-->>E: Reconcile destination membership and detect drift
+```
+
 **Start with the [executed proof](docs/evidence/report.md).** One fictional trial customer makes the distinction visible:
 
 | Question | Business time | Knowledge available | Result |
@@ -20,36 +40,6 @@ This project maintains customer audiences across **business time** and **knowled
 ## The new engineering proof
 
 The existing portfolio covers analytics, governed state, agent evaluation and migration. This repository adds **retraction-aware audience history at two time coordinates, plus incremental query maintenance driven by both arrivals and time boundaries**. It does not rebuild identity resolution, consent policy, approvals or workflow execution. The [four-candidate decision](docs/decision.md) explains why this narrow fifth project clears the overlap test.
-
-```mermaid
-flowchart LR
-  P[Normalized profile transitions] --> L[(Immutable fact revisions and knowledge commits)]
-  E[Observed product activity / corrections] --> L
-  L --> Q[SQL: effective at T, known by K]
-  C[Explicit business clock] --> I[Changed people + due time boundaries]
-  L --> I
-  I --> Q
-  Q --> G[Immutable audience generation and explanation]
-  G --> H[Historical restatement: no export]
-  G --> A[Coverage gate for computed quiet]
-  SCA[Explicit synthetic activity coverage at K] --> A
-  A --> D[Current eligible membership delta]
-  D --> S[(Synthetic membership destination)]
-  O[Independent full Python evaluator] --> V[Compare membership, features, evidence and timers]
-  Q --> V
-
-  classDef input fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
-  classDef foundation fill:#bfdbfe,stroke:#1d4ed8,color:#0f172a,stroke-width:2px;
-  classDef process fill:#93c5fd,stroke:#1e40af,color:#0f172a,stroke-width:2px;
-  classDef control fill:#60a5fa,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
-  classDef output fill:#2563eb,stroke:#1e3a8a,color:#ffffff,stroke-width:2px;
-
-  class P,E,C,SCA,O input;
-  class L foundation;
-  class I,Q process;
-  class G,A,V control;
-  class H,D,S output;
-```
 
 ## What is demonstrated
 
@@ -82,7 +72,7 @@ Verification runs lint, dependency checks, temporal/boundary/negative tests, ran
 
 All records and external behavior are synthetic. Person identity and normalized profile authority are assumed inputs. There are no campaign sends, real customer records, vendor connectors, AI agents or claimed Salesforce/Data Cloud/Snowflake deployments.
 
-The executed build is local Windows/Python/SQLite. Windows and Ubuntu CI are provided; **hosted CI has not been observed for this new repository**. Successful CI observed for the four earlier repositories does not imply this one has run remotely.
+The executed build is local Windows/Python/SQLite. [Hosted temporal-history and incremental-equivalence verification passed on Windows and Ubuntu](https://github.com/rlbsem/temporal-customer-audiences/actions/runs/35055453097). This is separate from the local proof.
 
 The rules are deliberately finite and person-local, with one source-wide coverage gate. The engine has an explicit clock and persisted due boundaries, not an always-on scheduler. Coverage is supplied synthetic evidence; the engine cannot establish whether a real source delivered everything. It does not establish privacy-erasure compliance, distributed scale or production readiness. [Architecture](docs/architecture.md), [operations](docs/operations.md) and [validation/limits](docs/validation.md) make those assumptions inspectable.
 
