@@ -4,8 +4,6 @@
 
 This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
 
-**Independent synthetic implementation:** customer facts and destination behavior are fictional; identity and source authority are assumed inputs.
-
 ```mermaid
 sequenceDiagram
   participant F as Immutable fact revisions
@@ -70,7 +68,7 @@ Verification runs lint, dependency checks, temporal/boundary/negative tests, ran
 
 ## Boundaries
 
-All records and external behavior are synthetic. Person identity and normalized profile authority are assumed inputs. There are no campaign sends, real customer records, vendor connectors, AI agents or claimed Salesforce/Data Cloud/Snowflake deployments.
+Customer records and destination behavior are synthetic. Person identity and normalized profile authority are assumed inputs. Destination delivery is a local simulation; live vendor connectors are outside this implementation.
 
 The executed build is local Windows/Python/SQLite. [Hosted temporal-history and incremental-equivalence verification passed on Windows and Ubuntu](https://github.com/rlbsem/temporal-customer-audiences/actions/runs/35055453097). This is separate from the local proof.
 
