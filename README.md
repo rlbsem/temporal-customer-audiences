@@ -35,9 +35,9 @@ sequenceDiagram
 
 **Computed quiet is separate from export eligibility.** Without an explicit coverage assertion for the entire three-day observation window through T, quiet members are suppressed from the synthetic destination. At the first second beyond coverage, export eligibility expires even with no new customer facts. Engagement remains eligible on positive evidence. The [executed coverage counterexample](docs/evidence/report.md#executed-coverage-counterexample) shows this distinction without claiming real-source completeness.
 
-## The new engineering proof
+## Temporal architecture boundary
 
-The existing portfolio covers analytics, governed state, agent evaluation and migration. This repository adds **retraction-aware audience history at two time coordinates, plus incremental query maintenance driven by both arrivals and time boundaries**. It does not rebuild identity resolution, consent policy, approvals or workflow execution. The [four-candidate decision](docs/decision.md) explains why this narrow fifth project clears the overlap test.
+This engine implements **retraction-aware audience history at two time coordinates and incremental reevaluation driven by both new facts and clock boundaries**. It maintains original and restated answers without claiming that audience eligibility itself grants marketing permission. Identity resolution, consent policy, approval and external workflow execution remain distinct governed responsibilities.
 
 ## What is demonstrated
 
