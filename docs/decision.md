@@ -1,46 +1,16 @@
-# Fifth flagship decision: build a narrowly bounded temporal audience engine
+# Architecture decision — temporal audience correctness
 
-## Inspection and remaining gap
+## Problem boundary
 
-The four public repositories were downloaded at their current commits before selection. Source, tests, architecture, generated evidence and workflow definitions were inspected. GitHub's Actions API reported successful current-commit jobs for all four; [inspection.json](evidence/inspection.json) records exact commits, job URLs and observation time. This review observed status metadata, not fresh execution or downloaded CI logs/artifacts. The hiring context below is supplied by Richard, not independently verified recruiter information.
+Audience membership changes when evidence arrives late, an accepted revision is retracted, a profile effective date changes, or the clock advances without new ingestion. Current-state-only tables cannot answer what was believed at knowledge time K about business time T.
 
-| Existing project | Specific inspected evidence | What it does not establish |
-|---|---|---|
-| Analytics truth | `fct_sessions.sql` rebuilds affected sessions from complete history; `dim_player.sql` restates first-seen cohorts | Retraction-aware audience membership at both a business-time and knowledge-time coordinate; clock-driven invalidation without new ingestion |
-| Governed truth | PostgreSQL customer state, source sequences, consent, jobs, approvals and append-only audit | Temporal audience computation and preservation of earlier membership decisions after facts are corrected |
-| Agent quality | Structured decisions, behavioral comparison, immutable release evidence and routed rollback | Deterministic temporal query maintenance |
-| Migration truth | Snapshot/change transfer, independent semantic reconciliation and evidence-bound cutover | Audience entry/exit history under late facts, rolling-window expiry and historical recomputation |
+## Design alternatives and decision
 
-The distinction is deliberately narrower than “customer data.” Most ingestion, governance and delivery mechanics are already covered. A new project qualifies only if its executable center is **two-time audience semantics and incremental maintenance as time advances**.
+- Current-membership-only materialization loses original knowledge-bounded decisions after correction.
+- Full recomputation is a useful correctness oracle but does not demonstrate selective invalidation and time-triggered maintenance.
+- A generic activation platform would add unrelated integration and permission complexity rather than testing the difficult temporal invariants.
 
-## Four genuinely different candidates
-
-**A — Temporal customer audiences.** Who belongs at business time T given knowledge available at K, how do late corrections change that answer, and what must be recomputed when no new events arrive?
-
-**B — MarTech configuration assurance.** Can a dependency graph of workflow/configuration objects be promoted without dangling references, incompatible contracts or environment drift? Dependency planning is new, but much of the surrounding promotion/gating/recovery story is already demonstrated.
-
-**C — Revenue integrity.** Can commercial, fulfillment, billing and ledger records be reconciled into an explainable variance bridge? Cross-ledger conservation and financial classification are new; current role alignment is weaker and domain-policy assumptions could dominate a synthetic implementation.
-
-**D — Causal experiment integrity (independently derived).** Can randomized marketing interventions produce defensible incremental-effect estimates despite noncompliance, delayed outcomes and allocation defects? This adds causal identification and experimental validity, not another behavioral telemetry pipeline. It fits Richard's paid-media background but is less central to the current architecture/orchestration interviews.
-
-## Comparison
-
-These are qualitative judgments, not measured hiring probabilities. “Overlap” describes risk, so lower is preferable. There is no mechanically summed score.
-
-| Criterion | A: temporal audiences | B: configuration | C: revenue integrity | D: causal experiments |
-|---|---|---|---|---|
-| Portfolio complementarity | Strong if two-time semantics are central | Moderate | Strong | Strong |
-| Current-role usefulness | Strong: customer context and data lifecycle | Strong: platform lifecycle | Moderate | Moderate |
-| Senior technical hiring signal | Strong temporal/data reasoning | Strong only with genuine dependency semantics | Strong financial integration reasoning | Strong measurement reasoning |
-| Engineering depth | Time boundaries, revisions, negative evidence, invalidation | Dependency planning and partial application | Cross-system conservation and classification | Assignment, estimands and bias controls |
-| Executable evidence potential | Strong: independent oracle and boundary counterexamples | Strong but much repeats existing proofs | Strong if financial assumptions are explicit | Strong with simulation; weaker on real treatment impact |
-| Overlap risk | Moderate; high if expanded into a generic CDP | High around release/control machinery | Moderate around reconciliation | Low |
-| Interview defensibility | Strong with precise finite rules | Moderate without real platform adapters | Moderate without independent accounting review | Strong technically, less aligned to role ownership |
-| Long-term value | Strong across customer/data roles | Strong for platform administration | Strong for PE/integration positioning | Strong for growth/measurement roles |
-| Distinctiveness | Strong two-time and timer-driven demonstration | Moderate within this portfolio | Strong | Strong |
-| New proof unavailable elsewhere | Original versus restated membership; silent expiry; selective recomputation | Configuration graph semantics | Financial variance classification | Causal identification |
-
-**Ranking for this portfolio now: A, D, B, C. Only A clears both the new-proof and current-role relevance thresholds for immediate construction.** D is a credible future direction, not dismissed as weak; its hiring relevance is currently lower. B's role relevance cannot overcome its overlap without a deeper real configuration problem. C is not given artificial preference for being distinctive. BMO's advanced case-study process does not drive the choice; the current Extreme Networks and Neon One themes do.
+**Selected approach:** finite, person-local audience rules with immutable generations, original and restated history, retraction-aware revisions, clock-driven expiry, coverage-conditioned export and an independent full evaluator. Identity, contact consent and destination campaign execution remain separate governed responsibilities.
 
 ## Scope chosen before implementation
 
