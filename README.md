@@ -5,6 +5,7 @@
 This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"background":"#10101D","primaryColor":"#2A2A3D","primaryTextColor":"#F0F0FF","primaryBorderColor":"#7C7CAF","lineColor":"#B8B8FF","textColor":"#F0F0FF","secondaryColor":"#181825","tertiaryColor":"#2E2E45","fontFamily":"IBM Plex Sans, Arial, sans-serif","fontSize":"15px","actorBkg":"#2A2A3D","actorBorder":"#B8B8FF","actorTextColor":"#F0F0FF","actorLineColor":"#7C7CAF","signalColor":"#B8B8FF","signalTextColor":"#F0F0FF","noteBkgColor":"#2E2E45","noteTextColor":"#F0F0FF","noteBorderColor":"#7C7CAF","labelBoxBkgColor":"#181825","labelTextColor":"#F0F0FF"}}}%%
 sequenceDiagram
   participant F as Immutable fact revisions
   participant E as Audience evaluator
