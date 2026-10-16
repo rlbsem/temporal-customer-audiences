@@ -4,6 +4,10 @@
 
 This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
 
+**Business example:** A trial customer has one recorded product interaction on day 3 and does not qualify as engaged. A second interaction arrives later but belongs to that same day. The system can now show *both* the original decision based on what was known then and the corrected historical decision—without rewriting history or sending an outdated audience change.
+
+**Why it matters:** Audiences must also change when time passes, even if no new event arrives. This implementation reevaluates expiry dates, removes ineligible membership and reconciles changes with a synthetic destination. Importantly, it will not export a customer merely because no recent activity was observed: the source must provide complete coverage of the relevant quiet period. Audience qualification does **not** grant marketing consent. [See the executed timeline and counterexample](docs/evidence/report.md).
+
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"background":"#10101D","primaryColor":"#2A2A3D","primaryTextColor":"#F0F0FF","primaryBorderColor":"#7C7CAF","lineColor":"#B8B8FF","textColor":"#F0F0FF","secondaryColor":"#181825","tertiaryColor":"#2E2E45","fontFamily":"IBM Plex Sans, Arial, sans-serif","fontSize":"15px","actorBkg":"#2A2A3D","actorBorder":"#B8B8FF","actorTextColor":"#F0F0FF","actorLineColor":"#7C7CAF","signalColor":"#B8B8FF","signalTextColor":"#F0F0FF","noteBkgColor":"#2E2E45","noteTextColor":"#F0F0FF","noteBorderColor":"#7C7CAF","labelBoxBkgColor":"#181825","labelTextColor":"#F0F0FF"}}}%%
 sequenceDiagram
