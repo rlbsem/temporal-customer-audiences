@@ -1,10 +1,10 @@
 # Temporal Customer Audiences
 
-**Who belongs in an audience now—and how can late information correct yesterday without rewriting what we knew then?**
+**Who belongs in an audience now? How can late information correct yesterday without rewriting what we knew then?**
 
 This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
 
-**Business example:** A trial customer has one recorded product interaction on day 3 and does not qualify as engaged. A second interaction arrives later but belongs to that same day. The system can now show *both* the original decision based on what was known then and the corrected historical decision—without rewriting history or sending an outdated audience change.
+**Business example:** A trial customer has one recorded product interaction on day 3 and does not qualify as engaged. A second interaction arrives later but belongs to that same day. The system can now show *both* the original decision based on what was known then and the corrected historical decision without rewriting history or sending an outdated audience change.
 
 **Why it matters:** Audiences must also change when time passes, even if no new event arrives. This implementation reevaluates expiry dates, removes ineligible membership and reconciles changes with a synthetic destination. Importantly, it will not export a customer merely because no recent activity was observed: the source must provide complete coverage of the relevant quiet period. Audience qualification does **not** grant marketing consent. [See the executed timeline and counterexample](docs/evidence/report.md).
 
