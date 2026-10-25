@@ -2,7 +2,7 @@
 
 **Who belongs in an audience now? How can late information correct yesterday without rewriting what we knew then?**
 
-This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
+**Business impact:** Keep customer targeting accurate after late corrections, respect current eligibility and preserve the evidence behind historical decisions. This project maintains customer audiences across **business time** and **knowledge time**. It preserves original decisions, produces separate historical restatements, expires membership when no new data arrives, and emits only the changes needed by a synthetic destination.
 
 **Business example:** A trial customer has one recorded product interaction on day 3 and does not qualify as engaged. A second interaction arrives later but belongs to that same day. The system can now show *both* the original decision based on what was known then and the corrected historical decision without rewriting history or sending an outdated audience change.
 
