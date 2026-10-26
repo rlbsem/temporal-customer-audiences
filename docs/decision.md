@@ -1,4 +1,4 @@
-# Architecture decision — temporal audience correctness
+# Architecture decision: temporal audience correctness
 
 ## Problem boundary
 
