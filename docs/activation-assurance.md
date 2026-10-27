@@ -69,7 +69,7 @@ Full regression, independent reconciliation and genuine browser capture:
 python scripts/verify_operations.py --workspace work/acceptance-01 --output work/evidence-01
 ```
 
-Both paths must be new. This command runs the original suite, adversarial operating tests, the complete original proof, the 36-check PostgreSQL/HTTP scenario, an independent source-based oracle, and the real console in Chromium. It captures desktop/mobile screenshots and WCAG A/AA checks with pinned axe-core. It never overwrites historical evidence. Automated accessibility checks supplement manual screenshot inspection; they do not establish universal accessibility.
+Both paths must be new. Run this full verifier from a Git checkout with Git installed: it records the exact revision alongside file hashes. The Compose demo and its read-only verification also work from a source ZIP without Git metadata. The full command runs the original suite, adversarial operating tests, the complete original proof, the 36-check PostgreSQL/HTTP scenario, an independent source-based oracle, and the real console in Chromium. It captures desktop/mobile screenshots and WCAG A/AA checks with pinned axe-core. It never overwrites historical evidence. Automated accessibility checks supplement manual screenshot inspection; they do not establish universal accessibility.
 
 The independent oracle reconstructs latest fact revisions before filtering business time, evaluates left-exclusive windows and coverage assertions, and compares every published decision and current permission result. It does not call the original evaluator or accept its aggregate counts as proof. The wrong-grain regression deliberately exposes multiplicative joins while checking the proper scoped-person/audience grain.
 
