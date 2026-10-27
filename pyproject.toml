@@ -11,6 +11,7 @@ dependencies = []
 
 [tool.setuptools.package-data]
 temporal_audiences = ["*.sql"]
+audience_ops = ["*.sql", "web/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -19,3 +20,9 @@ addopts = "-ra"
 [tool.ruff]
 line-length = 115
 target-version = "py312"
+
+[project.optional-dependencies]
+operations = ["psycopg[binary]==3.2.12"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

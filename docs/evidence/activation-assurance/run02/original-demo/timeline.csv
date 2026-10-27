@@ -1,0 +1,10 @@
+scenario,mode,business_day,knowledge_commit,computed_memberships,activation_eligible_memberships,evaluated_people
+original,current,3,1,,,1
+restated,historical,3,2,engaged_trial:ada,engaged_trial:ada,1
+as-known,historical,3,1,,,1
+corrected-current,current,3,2,engaged_trial:ada,engaged_trial:ada,1
+silence,current,5,2,engaged_trial:ada;quiet_trial:ada,engaged_trial:ada,1
+expired,current,8,2,quiet_trial:ada,,1
+retracted-history,historical,3,3,,,1
+scheduled,current,9,4,quiet_trial:ada,,1
+closed,current,10,4,,,1

@@ -55,6 +55,33 @@ This engine implements **retraction-aware audience history at two time coordinat
 - **Historical/current separation:** a backfill cannot move the active pointer or produce an export bundle.
 - **Destination correctness:** ordered deltas reconstruct the audience; old delivery cannot resurrect removed membership, and injected destination drift is detected.
 
+## Audience Operations and Activation Assurance
+
+An additive PostgreSQL operating layer now journals brand-scoped source batches and immutable publications, applies the original SQLite evaluator in a disposable per-brand cache, and separates membership from current channel/purpose permission. Reviewed additions and audited protective removals use a durable outbox; an independent local HTTP receiver persists ordered effects, receipts and separately queried business records in its own PostgreSQL database.
+
+The new read-only console inspects current eligibility, original/restated history, source coverage, bounded delivery exceptions and independent destination reconciliation. All records are synthetic. This is a local finite contract, not a native marketing-platform connector or production guarantee. [Architecture and execution boundaries](docs/activation-assurance.md).
+
+![Audience Operations running against local PostgreSQL and the independent receiver](docs/evidence/activation-assurance/run02/browser/operations-desktop.png)
+
+[Executed scenario, independent oracle and browser evidence](docs/evidence/activation-assurance/README.md).
+
+### Run the operating demonstration
+
+With Docker Compose installed:
+
+```bash
+docker compose up --build
+```
+
+Open **[Audience Operations](http://127.0.0.1:8596/)**. Select Atlas or Nova, inspect a person, compare the original and restated day-3 publications, and read a historical receipt from the separate receiver. The console is read-only; the finite synthetic acceptance harness performs the controlled writes before it starts. No cloud credentials or marketing messages are involved.
+
+```bash
+docker compose exec -T console python -m audience_ops.verify --config /console/console.json
+docker compose down
+```
+
+Ordinary restarts preserve the journal and return the recorded acceptance result. `docker compose down --volumes` explicitly destroys only this Compose project's disposable demonstration data and generated credentials. A code/schema change requires a fresh environment rather than silently migrating recorded evidence. [Local PostgreSQL fallback, full verification and SQL views](docs/activation-assurance.md#reproduce-and-inspect).
+
 ## Reproduce
 
 Use Python **3.12** from the extracted repository root:
@@ -67,15 +94,15 @@ python -m pip install --no-deps --no-build-isolation -e .
 python scripts/verify.py
 ```
 
-The runtime uses Python and SQLite, with no third-party runtime dependencies. Locked packages support testing and packaging. No cloud credentials, paid provider or Docker engine are required.
+The original temporal engine uses Python and SQLite, with no third-party runtime dependencies. Locked packages support testing and packaging. This original-engine command requires no cloud credentials, paid provider or Docker engine. The additive operating demonstration uses PostgreSQL and its separately locked dependencies.
 
-Verification runs lint, dependency checks, temporal/boundary/negative tests, randomized incremental-versus-full checks and the complete asserted demonstration. It regenerates [test results](docs/evidence/tests.xml), [source-hashed validation](docs/evidence/verification.json), [detailed proof](docs/evidence/temporal-proof.json) and a [timeline CSV](docs/evidence/timeline.csv). To run only the story: `python scripts/demo.py`.
+Verification runs lint, dependency checks, temporal/boundary/negative tests, randomized incremental-versus-full checks and the complete asserted demonstration. Fresh results are written to `work/original-verification/`; the original [test results](docs/evidence/tests.xml), [source-hashed validation](docs/evidence/verification.json), [detailed proof](docs/evidence/temporal-proof.json) and [timeline CSV](docs/evidence/timeline.csv) remain archived unchanged. To run only the story: `python scripts/demo.py`.
 
 ## Boundaries
 
-Customer records and destination behavior are synthetic. Person identity and normalized profile authority are assumed inputs. Destination delivery is a local simulation; live vendor connectors are outside this implementation.
+Customer records and destination behavior are synthetic. Person identity and normalized profile authority are assumed inputs. The original destination is a SQLite simulation; the additive operating receiver uses real local HTTP and a separate PostgreSQL database. Neither is a live vendor connector.
 
-The executed build is local Windows/Python/SQLite. [Hosted temporal-history and incremental-equivalence verification passed on Windows and Ubuntu](https://github.com/rlbsem/temporal-customer-audiences/actions/runs/35055453097). This is separate from the local proof.
+The original recorded build is local Windows/Python/SQLite. [Historical hosted temporal-history and incremental-equivalence verification passed on Windows and Ubuntu](https://github.com/rlbsem/temporal-customer-audiences/actions/runs/35055453097). The additive operating layer has separate [executed PostgreSQL/HTTP, browser and Linux Compose evidence](docs/evidence/activation-assurance/README.md); it does not replace the original proof.
 
 The rules are deliberately finite and person-local, with one source-wide coverage gate. The engine has an explicit clock and persisted due boundaries, not an always-on scheduler. Coverage is supplied synthetic evidence; the engine cannot establish whether a real source delivered everything. It does not establish privacy-erasure compliance, distributed scale or production readiness. [Architecture](docs/architecture.md), [operations](docs/operations.md) and [validation/limits](docs/validation.md) make those assumptions inspectable.
 

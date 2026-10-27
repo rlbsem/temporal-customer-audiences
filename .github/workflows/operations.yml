@@ -1,0 +1,88 @@
+name: Activation assurance
+on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: activation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17.6@sha256:00bc86618629af00d2937fdc5a5d63db3ff8450acf52f0636ec813c7f4902929
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: disposable-ci-only
+          POSTGRES_DB: postgres
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 2s --health-retries 30
+    env:
+      OPS_TEST_ADMIN_DSN: host=127.0.0.1 port=5432 dbname=postgres user=postgres password=disposable-ci-only
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.14'
+      - run: python -m pip install -r requirements-operations.lock
+      - run: python -m pip install --no-deps --no-build-isolation -e .
+      - run: python -m playwright install chromium
+      - run: python scripts/verify_operations.py --workspace work/native-ci --output work/native-evidence
+      - name: Check committed evidence when present
+        run: |
+          if test -f docs/evidence/activation-assurance/run02/verification.json; then
+            python scripts/check_operations.py
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: native-activation-evidence
+          path: work/native-evidence/
+      - name: Bounded public-safe test diagnostics
+        if: failure()
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for p in Path('work/native-ci').glob('*.log'):
+              text='\n'.join(p.read_text(errors='replace').splitlines()[-65:])
+              text=re.sub(r'(?i)(password|token|secret)=([^\s]+)',r'\1=[REDACTED]',text)
+              print(p.name, text[-7000:])
+          PY
+  compose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      COMPOSE_PROJECT_NAME: audience-acceptance-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.14'
+      - run: docker compose config --quiet
+      - run: docker compose up --build -d --wait --wait-timeout 240
+      - run: docker compose exec -T console python -m audience_ops.verify --config /console/console.json
+      - run: python -m pip install -r requirements-operations.lock
+      - run: python -m playwright install chromium
+      - run: python scripts/browser_operations.py --url http://127.0.0.1:8596/ --output work/compose-browser
+      - name: Preserve observed service status
+        if: always()
+        run: |
+          mkdir -p work/compose-checks
+          docker compose ps -a --format json > work/compose-checks/services.json
+      - name: Remove only this acceptance project
+        if: always()
+        run: |
+          docker compose down --volumes --remove-orphans --timeout 20
+          test -z "$(docker ps -aq --filter label=com.docker.compose.project=$COMPOSE_PROJECT_NAME)"
+          test -z "$(docker volume ls -q --filter label=com.docker.compose.project=$COMPOSE_PROJECT_NAME)"
+          test -z "$(docker network ls -q --filter label=com.docker.compose.project=$COMPOSE_PROJECT_NAME)"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: compose-browser-and-status
+          path: |
+            work/compose-browser/
+            work/compose-checks/

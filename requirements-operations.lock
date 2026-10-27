@@ -1,0 +1,10 @@
+# Additive operations/test lane. Original stdlib-only SQLite runtime is unchanged.
+-r requirements.lock
+psycopg==3.2.12
+psycopg-binary==3.2.12
+playwright==1.55.0
+pyee==13.0.0
+greenlet==3.2.4
+typing_extensions==4.15.0
+tzdata==2026.5
+PyYAML==6.0.3

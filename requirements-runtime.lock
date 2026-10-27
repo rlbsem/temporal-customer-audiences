@@ -1,0 +1,4 @@
+psycopg==3.2.12
+psycopg-binary==3.2.12
+typing_extensions==4.15.0
+tzdata==2026.5

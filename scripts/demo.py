@@ -5,7 +5,7 @@ from temporal_audiences.demo import run
 
 p = argparse.ArgumentParser()
 p.add_argument("--workspace", type=Path, default=Path("work/demo"))
-p.add_argument("--output", type=Path, default=Path("docs/evidence"))
+p.add_argument("--output", type=Path, default=Path("work/demo-output"))
 args = p.parse_args()
 run(args.workspace, args.output)
 print("Verified temporal history, no-ingestion expiry, sparse correction, coverage-conditioned export and destination deltas.")

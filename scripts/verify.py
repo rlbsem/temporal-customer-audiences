@@ -1,3 +1,4 @@
+import argparse
 import hashlib
 import json
 import os
@@ -26,7 +27,10 @@ def manifest():
 
 def main():
     start = time.monotonic()
-    output = ROOT / "docs/evidence"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, default=ROOT / "work/original-verification")
+    args = parser.parse_args()
+    output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     scratch = ROOT / "work/verification" / uuid4().hex
     scratch.mkdir(parents=True)

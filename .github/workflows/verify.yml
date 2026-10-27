@@ -27,8 +27,8 @@ jobs:
         with:
           name: temporal-proof-${{ matrix.os }}
           path: |
-            docs/evidence/verification.json
-            docs/evidence/tests.xml
-            docs/evidence/report.md
-            docs/evidence/temporal-proof.json
-            docs/evidence/timeline.csv
+            work/original-verification/verification.json
+            work/original-verification/tests.xml
+            work/original-verification/report.md
+            work/original-verification/temporal-proof.json
+            work/original-verification/timeline.csv
