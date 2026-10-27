@@ -77,7 +77,7 @@ class Client:
                     or r["segment"] not in {"engaged_trial", "quiet_trial"} or r["channel"] != "email"
                     or r["purpose"] != "trial_help" or type(r["seq"]) is not int or not 0 <= r["seq"] < 2**53
                     or type(r["active"]) is not bool or (r["effect"] is not None and
-                    (not isinstance(r["effect"], str) or not re.fullmatch(r"[a-f0-9]{64}", r["effect"])) )):
+                    (not isinstance(r["effect"], str) or not re.fullmatch(r"[a-f0-9]{64}", r["effect"])))):
                 raise Unknown("membership_contract_unknown")
             try:
                 identifier(r["person"])

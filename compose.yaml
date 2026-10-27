@@ -6,7 +6,7 @@ x-runtime: &runtime
   security_opt: [no-new-privileges:true]
   pids_limit: 128
   mem_limit: 512m
-  tmpfs: [/tmp:size=128m,mode=1777]
+  tmpfs: ['/tmp:size=128m,mode=1777']
   networks: [isolated]
 services:
   configure:

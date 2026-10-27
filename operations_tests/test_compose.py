@@ -13,6 +13,7 @@ def test_compose_bounds_exposure_and_separates_runtime_credentials():
     assert compose["networks"]["isolated"]["internal"]
     for name in ["receiver", "demo", "console"]:
         assert services[name]["read_only"] and services[name]["cap_drop"] == ["ALL"]
+        assert services[name]["tmpfs"] == ["/tmp:size=128m,mode=1777"]
     assert services["console"]["volumes"] == ["console-config:/console:ro"]
     assert services["receiver"]["volumes"] == ["receiver-config:/receiver:ro"]
     assert not any("PASSWORD" in k for k in services["postgres"]["environment"] if k != "POSTGRES_PASSWORD_FILE")

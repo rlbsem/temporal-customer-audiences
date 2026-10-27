@@ -19,4 +19,3 @@ def primed(runtime):
         runtime.ops.publish(actor("controller"), brand, "baseline", BASE + 3 * DAY)
     runtime.activation = Activation(runtime.config["dsn"], runtime.client)
     return runtime
-

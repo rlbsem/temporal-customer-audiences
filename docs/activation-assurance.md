@@ -73,6 +73,8 @@ The independent oracle reconstructs latest fact revisions before filtering busin
 
 ## Execution status
 
-The original 58 SQLite regressions and 36 new end-to-end native PostgreSQL/HTTP scenario checks have executed locally. The scenario includes real process termination, lost acknowledgment, permission withdrawal/expiry, coverage expiry, historical correction and receiver drift. Full adversarial, browser, Docker and hosted results are reported separately when executed; no pending lane is a passing result.
+The original 58 SQLite regressions, 40 operating/contract regressions and 36 end-to-end PostgreSQL/HTTP scenario assertions have executed in the Linux CI lane. The scenario includes real process termination, lost acknowledgment, permission withdrawal/expiry, coverage expiry, historical correction and receiver drift. The 36 scenario assertions also run inside one regression test; these counts are different kinds of checks and should not be summed as independent test cases. Windows and Linux retain the original 58-test lane.
+
+The operating oracle compares 164 historical person/audience decisions across ten publications and 20 current eligibility rows, with zero differences. Chromium exercises 50 brand/view/viewport states, 109 interaction/layout assertions and 20 automated accessibility scans. Source, screenshot and execution fingerprints accompany the fresh recorded evidence. Container results and the final local capture are reported separately; an unexecuted lane is never described as passing.
 
 The [preservation inventory](evidence/activation-assurance/original-files.json) binds the original engine, tests and archived evidence to main `01f3a18`. Fresh original-engine verification now writes under `work/`, never over the historical records.
