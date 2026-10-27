@@ -11,6 +11,9 @@ def test_compose_bounds_exposure_and_separates_runtime_credentials():
     assert services["console"]["ports"] == ["127.0.0.1:8596:8596"]
     assert all("ports" not in s for n, s in services.items() if n != "console")
     assert compose["networks"]["isolated"]["internal"]
+    assert services["console"]["networks"] == ["isolated", "console_access"]
+    assert all(s["networks"] == ["isolated"] for n, s in services.items() if n != "console")
+    assert compose["networks"]["console_access"]["driver_opts"]["com.docker.network.bridge.host_binding_ipv4"] == "127.0.0.1"
     for name in ["receiver", "demo", "console"]:
         assert services[name]["read_only"] and services[name]["cap_drop"] == ["ALL"]
         assert services[name]["tmpfs"] == ["/tmp:size=128m,mode=1777"]

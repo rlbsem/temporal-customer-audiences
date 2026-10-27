@@ -49,6 +49,8 @@ SQL models are declared in [operating.sql](../src/audience_ops/operating.sql): `
 
 The preferred Compose entry point and read-only verification command are in the [README](../README.md#run-the-operating-demonstration). Only the console is published, on loopback port 8596. PostgreSQL and receiver stay on the internal network. Separate private volumes carry the generated controller, receiver and console credentials. Application containers run without root or Linux capabilities and with read-only filesystems. The finite setup containers create only their own disposable demonstration state.
 
+Only the read-only console also joins a host-accessible bridge. Docker's [internal-network behavior](https://docs.docker.com/compose/how-tos/networking/) otherwise prevents the host browser from reaching its published port. The backend remains internal; this is not a general outbound firewall for the console. Its receiver client accepts only the declared local destination, and the browser CSP permits only same-origin application requests.
+
 For an installed local PostgreSQL distribution, use Python 3.12 and a fresh working directory:
 
 ```bash

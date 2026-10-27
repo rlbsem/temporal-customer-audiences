@@ -60,6 +60,7 @@ services:
     depends_on:
       demo: {condition: service_completed_successfully}
     volumes: ['console-config:/console:ro']
+    networks: [isolated, console_access]
     ports: ['127.0.0.1:8596:8596']
     healthcheck:
       test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8596/health',timeout=2)"]
@@ -68,6 +69,10 @@ services:
       retries: 30
 networks:
   isolated: {internal: true}
+  console_access:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: '127.0.0.1'
 volumes:
   postgres-data:
   postgres-secret:
