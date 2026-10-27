@@ -1,0 +1,14 @@
+{
+  "scope": "Source checkout compatibility observation; original execution artifacts unchanged",
+  "historical_record": "run01/verification.json",
+  "historical_source_checkpoint": "dc49a3b7601eb56130316927d56d0cbaa2d43cba",
+  "file": "requirements.lock",
+  "recorded_windows_sha256": "83d81d8855883c9e85b0282eea4c1b6cda6af0ccb1e271f0846252635bc373c0",
+  "git_blob_and_lf_checkout_sha256": "b36246d4884a5c9faef3a58c40d11f88508865f1ec3e62e3cef7439a0281528d",
+  "only_difference": "CRLF versus LF line endings; all dependency lines and versions identical",
+  "historical_inventory_unchanged": true,
+  "new_capture": "run02",
+  "policy": "Current execution evidence requires exact source bytes. No hash alias or line-ending exception was added to the checker.",
+  "ci_observation": "https://github.com/rlbsem/temporal-customer-audiences/actions/runs/40456738890",
+  "native_tests_and_browser_checks": "passed before the separate committed-source fingerprint rejection"
+}

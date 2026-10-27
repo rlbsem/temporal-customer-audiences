@@ -2,6 +2,8 @@
 
 The new operating layer preserves the original two-time evaluator. These records describe synthetic execution against local PostgreSQL, SQLite, an independently stored HTTP receiver and Chromium. They are not marketing-platform acceptance or customer results.
 
+`run02` is the current source-matching capture. The first Windows capture, `run01`, remains byte-for-byte archived: its dependency-lock fingerprint used CRLF checkout bytes and failed the separate Linux current-source gate. [The compatibility observation](source-checkout-compatibility.json) establishes that only newline representation differed. Dependencies and business behavior were unchanged. A fresh complete run with canonical source bytes replaces that record as the current gate; the checker still requires exact hashes and has no newline exception.
+
 - [Executed scenario and source/receiver snapshot](run02/acceptance.json): exact expected/observed values for 36 assertions; admitted batches, publication versions, permission revisions, frozen intents, independent effects, business records and request outcomes.
 - [Execution and regression record](run02/verification.json): source hashes, source revision, environment, named test cases, independently verified receipts and original-file preservation.
 - [Browser and screenshot provenance](run02/browser/browser.json): 109 assertions, 50 responsive states, 20 automated accessibility states, source/image hashes and actual browser version. Initially clipped contrast checks are scrolled into view and rechecked; unresolved findings fail capture.
