@@ -32,7 +32,7 @@ jobs:
       - run: python scripts/verify_operations.py --workspace work/native-ci --output work/native-evidence
       - name: Check committed evidence when present
         run: |
-          if test -f docs/evidence/activation-assurance/run01/verification.json; then
+          if test -f docs/evidence/activation-assurance/run02/verification.json; then
             python scripts/check_operations.py
           fi
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

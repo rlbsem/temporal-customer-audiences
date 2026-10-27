@@ -61,7 +61,7 @@ An additive PostgreSQL operating layer now journals brand-scoped source batches 
 
 The new read-only console inspects current eligibility, original/restated history, source coverage, bounded delivery exceptions and independent destination reconciliation. All records are synthetic. This is a local finite contract, not a native marketing-platform connector or production guarantee. [Architecture and execution boundaries](docs/activation-assurance.md).
 
-![Audience Operations running against local PostgreSQL and the independent receiver](docs/evidence/activation-assurance/run01/browser/operations-desktop.png)
+![Audience Operations running against local PostgreSQL and the independent receiver](docs/evidence/activation-assurance/run02/browser/operations-desktop.png)
 
 [Executed scenario, independent oracle and browser evidence](docs/evidence/activation-assurance/README.md).
 

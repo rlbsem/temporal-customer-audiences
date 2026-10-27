@@ -2,12 +2,12 @@
 
 The new operating layer preserves the original two-time evaluator. These records describe synthetic execution against local PostgreSQL, SQLite, an independently stored HTTP receiver and Chromium. They are not marketing-platform acceptance or customer results.
 
-- [Executed scenario and source/receiver snapshot](run01/acceptance.json): exact expected/observed values for 36 assertions; admitted batches, publication versions, permission revisions, frozen intents, independent effects, business records and request outcomes.
-- [Execution and regression record](run01/verification.json): source hashes, source revision, environment, named test cases, independently verified receipts and original-file preservation.
-- [Browser and screenshot provenance](run01/browser/browser.json): 109 assertions, 50 responsive states, 20 automated accessibility states, source/image hashes and actual browser version. Initially clipped contrast checks are scrolled into view and rechecked; unresolved findings fail capture.
-- [Artifact SHA-256 inventory](run01/artifact-integrity.json): every file in this fresh execution set, excluding the inventory itself.
+- [Executed scenario and source/receiver snapshot](run02/acceptance.json): exact expected/observed values for 36 assertions; admitted batches, publication versions, permission revisions, frozen intents, independent effects, business records and request outcomes.
+- [Execution and regression record](run02/verification.json): source hashes, source revision, environment, named test cases, independently verified receipts and original-file preservation.
+- [Browser and screenshot provenance](run02/browser/browser.json): 109 assertions, 50 responsive states, 20 automated accessibility states, source/image hashes and actual browser version. Initially clipped contrast checks are scrolled into view and rechecked; unresolved findings fail capture.
+- [Artifact SHA-256 inventory](run02/artifact-integrity.json): every file in this fresh execution set, excluding the inventory itself.
 - [Original-file preservation inventory](original-files.json): 24 original engine, test and archived-evidence files bound to base main `01f3a180402695689aad115a25db1261ad0c824e`. Original Git blob bytes are retained. Historical records were not regenerated or edited.
-- [Fresh original-engine proof](run01/original-demo/report.md): an additional execution of the existing demonstration, stored separately from its historical evidence.
+- [Fresh original-engine proof](run02/original-demo/report.md): an additional execution of the existing demonstration, stored separately from its historical evidence.
 - [Native and container CI record](ci-execution.json): actual successful source-checkpoint jobs, with prior failed container attempts preserved by URL and findings. Final-head status remains visible in the pull request.
 - [Wheel asset verification](wheel-verification.json): actual wheel build, archive checks and SQL/UI asset fingerprints. This is packaging verification, separate from the source-based runtime acceptance.
 
@@ -17,9 +17,9 @@ The scenario deliberately leaves blocked, uncertain and exhausted histories visi
 
 ## Inspect the actual console
 
-![Original/restated audience decisions and current permission](run01/browser/operations-desktop.png)
+![Original/restated audience decisions and current permission](run02/browser/operations-desktop.png)
 
-[Delivery and recovery desktop capture](run01/browser/delivery-desktop.png) · [Mobile source-and-controls capture](run01/browser/operations-mobile.png)
+[Delivery and recovery desktop capture](run02/browser/delivery-desktop.png) · [Mobile source-and-controls capture](run02/browser/operations-mobile.png)
 
 The screenshots come directly from the real running console. They contain no fabricated overlays or manually changed outcomes. The read-only receipt control queries both the receiver receipt and its separate persisted business record; it does not authorize a new action.
 

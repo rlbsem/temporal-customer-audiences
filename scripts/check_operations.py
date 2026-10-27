@@ -92,6 +92,6 @@ def check(evidence):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--evidence", type=Path, default=ROOT / "docs/evidence/activation-assurance/run01")
+    parser.add_argument("--evidence", type=Path, default=ROOT / "docs/evidence/activation-assurance/run02")
     args = parser.parse_args()
     print(json.dumps(check(args.evidence), indent=2))
