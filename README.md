@@ -55,6 +55,12 @@ This engine implements **retraction-aware audience history at two time coordinat
 - **Historical/current separation:** a backfill cannot move the active pointer or produce an export bundle.
 - **Destination correctness:** ordered deltas reconstruct the audience; old delivery cannot resurrect removed membership, and injected destination drift is detected.
 
+## Audience Operations and Activation Assurance
+
+An additive PostgreSQL operating layer now journals brand-scoped source batches and immutable publications, applies the original SQLite evaluator in a disposable per-brand cache, and separates membership from current channel/purpose permission. Reviewed additions and audited protective removals use a durable outbox; an independent local HTTP receiver persists ordered effects, receipts and separately queried business records in its own PostgreSQL database.
+
+The new read-only console inspects current eligibility, original/restated history, source coverage, bounded delivery exceptions and independent destination reconciliation. All records are synthetic. This is a local finite contract, not a native marketing-platform connector or production guarantee. [Architecture and execution boundaries](docs/activation-assurance.md).
+
 ## Reproduce
 
 Use Python **3.12** from the extracted repository root:
@@ -69,7 +75,7 @@ python scripts/verify.py
 
 The runtime uses Python and SQLite, with no third-party runtime dependencies. Locked packages support testing and packaging. No cloud credentials, paid provider or Docker engine are required.
 
-Verification runs lint, dependency checks, temporal/boundary/negative tests, randomized incremental-versus-full checks and the complete asserted demonstration. It regenerates [test results](docs/evidence/tests.xml), [source-hashed validation](docs/evidence/verification.json), [detailed proof](docs/evidence/temporal-proof.json) and a [timeline CSV](docs/evidence/timeline.csv). To run only the story: `python scripts/demo.py`.
+Verification runs lint, dependency checks, temporal/boundary/negative tests, randomized incremental-versus-full checks and the complete asserted demonstration. Fresh results are written to `work/original-verification/`; the original [test results](docs/evidence/tests.xml), [source-hashed validation](docs/evidence/verification.json), [detailed proof](docs/evidence/temporal-proof.json) and [timeline CSV](docs/evidence/timeline.csv) remain archived unchanged. To run only the story: `python scripts/demo.py`.
 
 ## Boundaries
 

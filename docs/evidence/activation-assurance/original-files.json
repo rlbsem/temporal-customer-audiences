@@ -1,0 +1,29 @@
+{
+  "base_commit": "01f3a180402695689aad115a25db1261ad0c824e",
+  "sha256": {
+    "docs/evidence/build.json": "ff755710f21f9704c0abfb2bd234da8b5603bdeb9510d5e2996600876b9c6742",
+    "docs/evidence/inspection.json": "acd9829be30ca90e6c3b609a5c6af83f19e94e1999301a3c5e97dd7077e843cc",
+    "docs/evidence/report.md": "8969718d8c6bf5f7c73d74ad938bd457a5b047d658ee9c1625f13deab7a22734",
+    "docs/evidence/temporal-proof.json": "1350660bd4a6292eedb91575265baca5dc0496780ca79af6cf82d958da401ccc",
+    "docs/evidence/tests.xml": "b30da87a1403461cb3e6595ce9e81dd8e2eb2c34affc80d65341170c7fcc6f08",
+    "docs/evidence/timeline.csv": "5362dde3a3b1df45fe7651ccbe894856b9948c006d65edfb340b284fc2f12886",
+    "docs/evidence/verification.json": "0d499649d5e341c9e659bc641dfa0a681a7259bf6ae4311cba0d4053959040d2",
+    "src/temporal_audiences/__init__.py": "92ac3a8e651f7359303f4e67fe29788509d6a3fcd6ffada753ead01c75d3a955",
+    "src/temporal_audiences/contracts.py": "085dc93deef79afeb40415a8d0069280af971b8e1eb09b957044a2ecf34fc707",
+    "src/temporal_audiences/coverage.py": "499eaa71a3e099a22f377408ab1819bb87aeb65292c2f3f65dd159b90a667705",
+    "src/temporal_audiences/demo.py": "587971b0caade351b870a5985fc456ac1f7e67518aca3f4545ee58fb18b92347",
+    "src/temporal_audiences/destination.py": "ce6741975635b97e7ab2c14c5bc6589570fb0a96d5f0636fb75795c6f415f691",
+    "src/temporal_audiences/engine.py": "b8ffa77847bb9fab36b90062dac28c9da51bbf4b215100ca78263201c5e28403",
+    "src/temporal_audiences/features.sql": "cae304cfd66513ca4faa86c0eca742fa369cb99c620ada0f4c3582ac336b0750",
+    "src/temporal_audiences/fixtures.py": "4ec659fe9e3688b5306f4d46d6c8176da294887786f5d5a98254899a89952188",
+    "src/temporal_audiences/oracle.py": "1b79155bbff0e01cb24df6ef31cfe42cc631f2fba009b3c98ece6e834b1a362c",
+    "src/temporal_audiences/schema.sql": "14bba9e02deb941d339348df8cd5cf6aab4e55eee08fe6fce7a65f5b46fff668",
+    "src/temporal_audiences/store.py": "f186952e44012ed774884e8e5d1b5b59682933052b8013a7ee16b6cb7ae3f261",
+    "tests/conftest.py": "76e442f3b3b87fc109cb12d9ab4fafbef70f54d288d8b900acf29478d3764865",
+    "tests/test_admission.py": "90756a3c5053f8aa294dbd19102c08c08cfd8dfdca4f0cd61af4ac331b1df048",
+    "tests/test_coverage.py": "9eab83ee67eb05571cb92411100869367fb0e4cea5f4d2ab0bdfba9cdc7b9571",
+    "tests/test_destination.py": "853ea622d1ef7e12843da5131b435f6a303eaedbf7a44a0f6f719b9b14028fdf",
+    "tests/test_incremental.py": "75804e7e1aff6b30cc50cb105b058228bfb536baa42a5a15dd806b7c533d6350",
+    "tests/test_time.py": "ea6e92837c9ed9613b5e56637f807bcde5e3064f823f609bf0be077382bcf6c2"
+  }
+}
