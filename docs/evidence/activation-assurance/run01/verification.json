@@ -1,0 +1,528 @@
+{
+  "status": "passed",
+  "started_at": "2026-10-27T05:37:41.550917+00:00",
+  "finished_at": "2026-10-27T05:38:02.803066+00:00",
+  "python": "3.12.14",
+  "os": "Windows",
+  "postgresql": "PostgreSQL 17.11 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+  "dependencies": {
+    "psycopg": "3.2.12",
+    "playwright": "1.55.0",
+    "pytest": "8.4.2"
+  },
+  "lane": "actual_native_local_postgresql_sqlite_http_browser_and_terminated_worker",
+  "git_revision": "dc49a3b7601eb56130316927d56d0cbaa2d43cba",
+  "source_sha256": {
+    ".github/workflows/operations.yml": "b40b06ee89d11e318bce425dec9753e573b41db9c77e939f2fb04eb667fd241e",
+    ".github/workflows/verify.yml": "bc6c8becf0b3a8c48358cdf747ee4ec666b1c4721f108faa54f5735f06c1a4c5",
+    "compose.yaml": "85a2c3d2b6d183b7b2ba99b1650379845976e119572122d536cae9ee03d8d12b",
+    "Dockerfile": "97392fa5303884f4add90789b4aa2df29edf1b468bb6f1c1545234872523ba30",
+    "operations_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "operations_tests/conftest.py": "da6abc24f4567294b834c4e4416b82ae94f01fef7789b841eaefdd16a51af92a",
+    "operations_tests/helpers.py": "b54d91bb985d9bfeb73bd2bc07869e403765cadd16e0cdddd8ba9f9819d3fb6f",
+    "operations_tests/test_client_contract.py": "942ce1f341843c10f6ab6ad15488068b4256b22ba14b504f4df2eb22d4911dde",
+    "operations_tests/test_compose.py": "02e48ad023d1f2bf2f71a0d5294836139475266fd7a9a3727bc4864ddb2e2c4f",
+    "operations_tests/test_console.py": "1a835fe93e3e586ed843a82cc99d77da4ab38db3a59a133142a71c36692e840e",
+    "operations_tests/test_operations.py": "25274f3835d02de5b18a05ae70fdae3307b822b28c7cef538ceff7c31e6bca1a",
+    "operations_tests/test_preservation.py": "8a9680c657123fe1b36c85221ce835697ba3553d4c961d1f3754da30621c15a9",
+    "operations_tests/vendor/axe.min.js": "880970c081707360e64f34cea25ff91892f5bc95675b0776925b9709dd8a68bb",
+    "operations_tests/vendor/provenance.json": "6a333252660c05f04c4e17254966af37bd705182158ca6b18affe9ff0f0a2191",
+    "pyproject.toml": "486e573fecc25283d2a64dd83d9aecbed986f68477c3634cc878f9dee7df96a9",
+    "requirements-operations.lock": "3101f132debabbac7591487f0b8bb8eb1ac350506ef8cb4ae193bf07f3330acd",
+    "requirements-runtime.lock": "407a3760b60ea04e48da56ede500420243c3bab554f334a2e59fa3c01fb3739d",
+    "requirements.lock": "83d81d8855883c9e85b0282eea4c1b6cda6af0ccb1e271f0846252635bc373c0",
+    "scripts/browser_operations.py": "e6efbd833a1d963cbcb962b8db2b4c97838f6201beafca5053c630ae1191c7be",
+    "scripts/check_operations.py": "2bbd6a9847e016e1038c3926a383de9dbdf2cee2bb7e7c2830a0d5b86b6887e0",
+    "scripts/demo.py": "20f646a422f082a7c674c28f3649623781f604e5f085f070a402cfc7335ab302",
+    "scripts/verify.py": "bf69f16ee4d638907f5c2f761f742edd3395b75a587fb6ef878d3bcfcbe82d95",
+    "scripts/verify_operations.py": "8de680f1432362b1e4a9287ae94c3f70fa47e18a7f0397be6f6fba3443a83c16",
+    "src/audience_ops/__init__.py": "9a008f62d9da2771a9b6151bbcdf8e75a97ba1b3675d45c297cffa6bff2fb05e",
+    "src/audience_ops/activation.py": "2ad6d0a0e5eb515de4fefe37c153c7022317dc48877904603375428983915f7e",
+    "src/audience_ops/bridge.py": "718e02eea6001361896687fa1c7ec3ebebe6146aa0e7fc5b05bf28102f8ecd01",
+    "src/audience_ops/client.py": "8f71c45a30902e82a3ba47754e8cfb2a906ced3b192dfe62b66e75d0f73d4b40",
+    "src/audience_ops/compose_setup.py": "da09ca83e9cbd320cf9698cfaf95d559bea0be014881861fcb9ecd200b192e52",
+    "src/audience_ops/console.py": "e9b07b1b53f4c5b2523562aea386b47a0c6f554f1501125d1d4e976de8f90da7",
+    "src/audience_ops/db.py": "e15b5f349ea80f36372d06ba0d806568f79a631b1154626a97369de0df05f655",
+    "src/audience_ops/demo.py": "c5d1d69705304ea3e4896f30203d8e59c762cdb7245f95c04eabf20cb18c4aea",
+    "src/audience_ops/operating.sql": "a3755f0c152c235dea91ff1b722eb0cf79689058654ec1e19fe62e6a3799a94a",
+    "src/audience_ops/oracle.py": "d3af988d25902989d977a16e0a672cd1eb42e6b8569fc0868e8b123ca5bfdc94",
+    "src/audience_ops/receiver.py": "fed4a89ae6095dd5006a5795095e1e6951cc0d5e57f00daef78b77f5c4d65d49",
+    "src/audience_ops/receiver.sql": "cd46112f155cc9ae4a578219706a4ad000a06b575fef618289feac07cb1863a9",
+    "src/audience_ops/runtime.py": "9b691ef9b6ba4af258ac15290978cd02150e87225b22e0c77009e9c69a05f8e6",
+    "src/audience_ops/scenario.py": "e837cd7b1019556f0dc0d608893e4c0bd710fed41365fcb7eb3e14ae009b460c",
+    "src/audience_ops/service.py": "faa40c874fa9d55836a6cb3647cd84052956a12794b8dab787172f90c7bf8c90",
+    "src/audience_ops/verify.py": "4b1bd4f1e18d0ac107fdad04094af3cdb10c9c31b5231af3a39fbb51a0234220",
+    "src/audience_ops/web/app.js": "b4b61a7d829a82d6743c0563ced8166535029fdc3260f83b1390d8a254df3acc",
+    "src/audience_ops/web/index.html": "7ae1c93ec9a643bd77ea4da7f1221ac5089a07930c0b5a2db67b9f07b3caf43f",
+    "src/audience_ops/web/style.css": "b9b001f99ae77196523ab938ae59498758089ac346c4ced01c628e9aaae3bd22",
+    "src/audience_ops/worker.py": "13a3461b39e1459131fda1aed6c1f09ccef7bb29bc049516698d22d1aa6fe248",
+    "src/temporal_audiences/__init__.py": "3dc6ae2fb2413cea02d8bbddd45d3eaa17388059ea312a0ab954a4d872ae40f3",
+    "src/temporal_audiences/contracts.py": "9c6fe7f5dea15eb429111ebe047fad5272d5fcddfd3c3e1c8cd99ab7418af389",
+    "src/temporal_audiences/coverage.py": "66f43328006ef65216aefdbb4c3538509bdb922e92796ee4c49ebb57d677e7b2",
+    "src/temporal_audiences/demo.py": "99d94db922e8ab30f0f6dd718729c4684602db98c3e0bb3d3acac64f8dd59b94",
+    "src/temporal_audiences/destination.py": "2518fcd0357bffaab600bc40d29db94ed27360be2535f70bd99fa53d55670dc3",
+    "src/temporal_audiences/engine.py": "a251a886631ca0df6932aa77b332589a3aeb02b25a7bdc8a6d9912c9e6710155",
+    "src/temporal_audiences/features.sql": "72d3123c47b0497caadafa2b6f104907ce7771978391a7d1f1a1c96772e3907a",
+    "src/temporal_audiences/fixtures.py": "5e51f3a32efefc4369dead5dc28965ea67655bf5a8817f6fca6117fc05b5f296",
+    "src/temporal_audiences/oracle.py": "b6779f6f364bf091d56f7651404e33ef6466015ef41c7576295caae0be3b6d1b",
+    "src/temporal_audiences/schema.sql": "20cfce9e54260416a2b4c9e1a623d98921f19950ca89aed2a4f8872d3b63707c",
+    "src/temporal_audiences/store.py": "24ddf6f0c59c16d7020970958b991cc686df4b720bde4c763963d388f0d98aca",
+    "tests/conftest.py": "08132c7785c5601de1cb6c072b77de43796b2a23258746d1cf40685a4d73b397",
+    "tests/test_admission.py": "0e7927143a3a460193ffb0ce76ad98651db101627ad05876725cd4f7ae510836",
+    "tests/test_coverage.py": "c754d6501b365fbe2e47c7b5c75e0d2dbbf2f69ef74547666b4b889b1de0b366",
+    "tests/test_destination.py": "b32b4e9fa96e35267ccaeda33bba321910f28f9685a1554dc179aee26bed043f",
+    "tests/test_incremental.py": "7c16aae26f5e52ed8d1a04ab7842eb3d0e05d21c487ef65093659fdb9f43b3cf",
+    "tests/test_time.py": "9af1963b31a70333b43b3cf902d404415962e354e4236bd17e14baed2eed01fa"
+  },
+  "runtime_source_hash": "9cc25db189035fe262c7ac49e4f0012745e97a7f40cb4956077d7bd7ab0535c6",
+  "suites": {
+    "original": {
+      "tests": 58,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "test": "tests.test_admission.test_batch_retry_and_repeated_fact_are_deduplicated",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_conflicting_revision_rejects_whole_batch_including_earlier_valid_rows",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_fact_owner_cannot_change_and_duplicate_batch_revision_is_rejected",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_closed_contract_refuses_malformed_fact_without_writing[revision-True]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_closed_contract_refuses_malformed_fact_without_writing[effective_at-1.5]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_closed_contract_refuses_malformed_fact_without_writing[retracted-false]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_closed_contract_refuses_malformed_fact_without_writing[source-unapproved]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_closed_contract_refuses_malformed_fact_without_writing[person_id-../../other]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_closed_contract_refuses_malformed_fact_without_writing[value-prospect]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_admission.test_raw_facts_and_receipts_are_immutable",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_missing_coverage_suppresses_only_absence_activation",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_incomplete_or_stale_assertion_cannot_activate_quiet[1767225601-1767484800-incomplete_window]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_incomplete_or_stale_assertion_cannot_activate_quiet[1767225600-1767484799-coverage_behind_clock]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_incomplete_or_stale_assertion_cannot_activate_quiet[1767484800-1767571200-incomplete_window]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_clock_crosses_coverage_boundaries_with_reused_customer_decisions",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_late_coverage_and_corrections_restate_safety_without_mutating_history",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_retracted_coverage_cannot_be_resurrected_by_lower_revision",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_rule_change_rechecks_whole_required_interval",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_coverage_admission_is_idempotent_atomic_and_immutable",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_pre_gate_generation_is_restricted_on_upgrade_without_rewriting_it",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_invalid_coverage_refused_before_writing[changes0]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_invalid_coverage_refused_before_writing[changes1]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_invalid_coverage_refused_before_writing[changes2]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_invalid_coverage_refused_before_writing[changes3]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_invalid_coverage_refused_before_writing[changes4]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_mixed_coverage_revisions_facts_clocks_and_historical_cuts_match_oracle[13]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_coverage.test_mixed_coverage_revisions_facts_clocks_and_historical_cuts_match_oracle[71]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_membership_deltas_match_full_sets_and_old_delivery_cannot_resurrect",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_missing_parent_delta_is_refused",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_tampered_delta_and_wrong_result_hash_do_not_partially_apply",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_destination_drift_detected_before_delivery_and_on_retry",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_historical_generations_have_no_destination_contract",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_wrong_lineage_and_duplicate_changes_are_rejected",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_destination_refuses_invalid_explanation_metadata[reason-False]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_destination.test_destination_refuses_invalid_explanation_metadata[decision_evaluated_at-1775865600]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_sparse_correction_reevaluates_one_subject_and_equals_full_oracle",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_rule_change_invalidates_whole_population",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_code_change_invalidates_cached_features",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_long_clock_jump_and_unchanged_interval_equal_full_evaluation",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_randomized_corrections_retractions_and_clock_steps_match_independent_oracle[3]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_randomized_corrections_retractions_and_clock_steps_match_independent_oracle[17]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_randomized_corrections_retractions_and_clock_steps_match_independent_oracle[59]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_randomized_corrections_retractions_and_clock_steps_match_independent_oracle[211]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_failed_recomputation_cannot_publish_partial_generation",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_incremental.test_concurrent_same_run_key_returns_one_generation",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_original_as_known_and_restated_history_are_distinct_and_immutable",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_clock_alone_adds_absence_membership_and_expires_engagement",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_exact_left_exclusive_window_boundary[-1-True]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_exact_left_exclusive_window_boundary[0-False]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_exact_left_exclusive_window_boundary[1-False]",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_future_activity_and_profile_transitions_trigger_without_new_data",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_latest_revision_selected_before_business_time_filter",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_retraction_removes_historical_evidence_without_erasing_earlier_knowledge",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_out_of_order_lower_revision_never_resurrects_retracted_fact",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_ambiguous_profile_time_is_visible_and_excluded_until_resolved",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_missing_profile_is_not_assumed_trial",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_current_cannot_publish_past_time_or_old_knowledge",
+          "status": "passed"
+        },
+        {
+          "test": "tests.test_time.test_timezone_normalization_and_whole_seconds",
+          "status": "passed"
+        }
+      ]
+    },
+    "operations": {
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_membership_is_unknown_not_absence_or_unbounded_crash[None]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_membership_is_unknown_not_absence_or_unbounded_crash[body1]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_membership_is_unknown_not_absence_or_unbounded_crash[unexpected]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_membership_is_unknown_not_absence_or_unbounded_crash[body3]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_successful_receipt_does_not_authorize_replay[None]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_successful_receipt_does_not_authorize_replay[body1]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_client_contract.test_malformed_successful_receipt_does_not_authorize_replay[unexpected]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_compose.test_compose_bounds_exposure_and_separates_runtime_credentials",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_compose.test_runtime_container_has_no_privileged_user_or_unreviewed_build_context",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_console.test_read_only_console_enforces_scope_and_exposes_no_credentials",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_console.test_receiver_unavailability_never_becomes_false_empty_state",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_console.test_browser_clears_prior_brand_evidence_when_next_scope_fails",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_executed_end_to_end_with_real_process_termination_and_reconciliation",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_source_authority_is_scoped_before_any_ingestion[other_brand]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_source_authority_is_scoped_before_any_ingestion[wrong_role]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_source_authority_is_scoped_before_any_ingestion[wrong_stream]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[missing-missing_permission]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[withdrawn-withdrawn]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[suppressed-suppressed]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[expired-permission_expired]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[future-permission_not_yet_valid]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[purpose-missing_permission]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_membership_does_not_grant_scoped_contact_permission[channel-missing_permission]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_exact_approval_and_present_policy_are_rechecked",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_new_source_head_invalidates_old_approval_until_republication",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_reordered_retracted_and_duplicate_revisions_preserve_engine_semantics",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_coverage_expiry_and_historical_publication_are_not_new_authority",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_concurrent_workers_generate_one_real_receiver_effect",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_third_unacknowledged_post_can_reconcile_without_a_fourth_post",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_corrupt_independent_readback_is_not_replayed_or_reported_as_success",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_receiver_sequence_fence_blocks_reordered_add_after_removal",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_unknown_receiver_identity_becomes_manual_exception_not_identity_merge",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_sql_views_use_correct_grain_despite_multiple_permission_revisions",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_operating_and_console_logins_cannot_mutate_independent_receipts",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_restart_preserves_publication_and_configuration_identities",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_destination_is_local_and_cannot_exfiltrate_credentials[https://api.example.com]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_destination_is_local_and_cannot_exfiltrate_credentials[http://169.254.169.254]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_destination_is_local_and_cannot_exfiltrate_credentials[http://user:pass@localhost:80]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_operations.test_destination_is_local_and_cannot_exfiltrate_credentials[http://localhost:80/?secret=x]",
+          "status": "passed"
+        },
+        {
+          "test": "operations_tests.test_preservation.test_original_engine_tests_and_archived_evidence_are_exact_base_bytes",
+          "status": "passed"
+        }
+      ]
+    }
+  },
+  "read_only_verification": {
+    "status": "passed",
+    "source_hash": "9cc25db189035fe262c7ac49e4f0012745e97a7f40cb4956077d7bd7ab0535c6",
+    "checks": 36,
+    "brands": [
+      {
+        "brand": "atlas",
+        "publications": 9,
+        "decision_rows_compared": 162,
+        "eligibility_rows": 18,
+        "eligible": [],
+        "row_differences": 0,
+        "method": "raw_source_revision_selection_python_windows_and_scoped_permission_journal",
+        "independent_receipts": 9,
+        "destination_differences": 0
+      },
+      {
+        "brand": "nova",
+        "publications": 1,
+        "decision_rows_compared": 2,
+        "eligibility_rows": 2,
+        "eligible": [],
+        "row_differences": 0,
+        "method": "raw_source_revision_selection_python_windows_and_scoped_permission_journal",
+        "independent_receipts": 2,
+        "destination_differences": 0
+      }
+    ],
+    "native_vendor_calls": 0,
+    "read_only_verification": true
+  },
+  "synthetic": true,
+  "native_vendor_calls": 0,
+  "docker": {
+    "local_cli_present": false,
+    "executed_by_this_command": false,
+    "note": "Compose acceptance is a separate CI lane."
+  },
+  "owned_processes_stopped": true,
+  "original_files_preserved": 24
+}

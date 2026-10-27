@@ -102,7 +102,7 @@ Verification runs lint, dependency checks, temporal/boundary/negative tests, ran
 
 Customer records and destination behavior are synthetic. Person identity and normalized profile authority are assumed inputs. The original destination is a SQLite simulation; the additive operating receiver uses real local HTTP and a separate PostgreSQL database. Neither is a live vendor connector.
 
-The executed build is local Windows/Python/SQLite. [Hosted temporal-history and incremental-equivalence verification passed on Windows and Ubuntu](https://github.com/rlbsem/temporal-customer-audiences/actions/runs/35055453097). This is separate from the local proof.
+The original recorded build is local Windows/Python/SQLite. [Historical hosted temporal-history and incremental-equivalence verification passed on Windows and Ubuntu](https://github.com/rlbsem/temporal-customer-audiences/actions/runs/35055453097). The additive operating layer has separate [executed PostgreSQL/HTTP, browser and Linux Compose evidence](docs/evidence/activation-assurance/README.md); it does not replace the original proof.
 
 The rules are deliberately finite and person-local, with one source-wide coverage gate. The engine has an explicit clock and persisted due boundaries, not an always-on scheduler. Coverage is supplied synthetic evidence; the engine cannot establish whether a real source delivered everything. It does not establish privacy-erasure compliance, distributed scale or production readiness. [Architecture](docs/architecture.md), [operations](docs/operations.md) and [validation/limits](docs/validation.md) make those assumptions inspectable.
 

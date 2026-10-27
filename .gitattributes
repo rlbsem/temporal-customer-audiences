@@ -1,4 +1,5 @@
 * text=auto eol=lf
 *.png binary
 *.zip binary
-docs/evidence/activation-assurance/** -text
+# Executed artifacts retain their original bytes, including Windows CRLF.
+docs/evidence/activation-assurance/** -text whitespace=cr-at-eol

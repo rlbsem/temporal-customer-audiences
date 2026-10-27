@@ -8,6 +8,8 @@ The new operating layer preserves the original two-time evaluator. These records
 - [Artifact SHA-256 inventory](run01/artifact-integrity.json): every file in this fresh execution set, excluding the inventory itself.
 - [Original-file preservation inventory](original-files.json): 24 original engine, test and archived-evidence files bound to base main `01f3a180402695689aad115a25db1261ad0c824e`. Original Git blob bytes are retained. Historical records were not regenerated or edited.
 - [Fresh original-engine proof](run01/original-demo/report.md): an additional execution of the existing demonstration, stored separately from its historical evidence.
+- [Native and container CI record](ci-execution.json): actual successful source-checkpoint jobs, with prior failed container attempts preserved by URL and findings. Final-head status remains visible in the pull request.
+- [Wheel asset verification](wheel-verification.json): actual wheel build, archive checks and SQL/UI asset fingerprints. This is packaging verification, separate from the source-based runtime acceptance.
 
 The independent raw-source oracle compares **164 historical decision rows and 20 current eligibility rows**, with zero differences. Atlas and Nova retain different identities for local person `100`. Current membership is person × audience, not a count of unique customers; historical confirmed effects are not current active destination membership.
 
@@ -29,7 +31,7 @@ python scripts/check_operations.py
 
 This checks the captured source bytes, historical preservation, journal/payload hashes, independently stored effects and records, oracle results, browser assertions, resolved accessibility findings, screenshot dimensions/hashes, local documentation links and absence of private credential fields in the public JSON. For a new actual execution use the [full verification procedure](../../activation-assurance.md#reproduce-and-inspect), always writing to new paths.
 
-Docker is not installed on the local Windows execution host. Compose acceptance is a separate Linux GitHub Actions lane, including live read-only verification, real-browser checks and post-teardown project-resource absence checks. Current CI results are visible in the draft pull request; local execution alone is not evidence that Docker ran.
+Docker is not installed on the local Windows execution host. The separate Linux Compose lane passed startup, live read-only verification, the 109-assertion browser check and post-teardown project-resource absence checks. Current CI results are visible in the draft pull request; local execution alone is not evidence that Docker ran.
 
 ## Boundaries
 

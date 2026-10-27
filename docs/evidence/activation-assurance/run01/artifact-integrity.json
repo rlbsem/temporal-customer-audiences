@@ -1,0 +1,11 @@
+{
+  "acceptance.json": "390f4fa84ea21cfb3b38379999e4b4ee9c29b245d2f96e73feb97c223b1939ca",
+  "browser/browser.json": "d5b0030e7352f87a91540bf95e9007895d89caab51bb2ff614e90db953cf10a3",
+  "browser/delivery-desktop.png": "e331b155eeaf61ba5dcf3f3ac3604d51b6d6643cb2352b80f5e41a46391e2c21",
+  "browser/operations-desktop.png": "7df61ee64e384ca76119ab2e722e7ac3bfa9ae50e6042ff6cf47e3100acbb04f",
+  "browser/operations-mobile.png": "cce616c563c936db079da2b456be95af9ba299bf13e02a2beed53a9c3c954779",
+  "original-demo/report.md": "8969718d8c6bf5f7c73d74ad938bd457a5b047d658ee9c1625f13deab7a22734",
+  "original-demo/temporal-proof.json": "dd549ce3a7662b1181a0ac563d6b455c8c990dd48dd84309b1c2fa6ca75e41bb",
+  "original-demo/timeline.csv": "5362dde3a3b1df45fe7651ccbe894856b9948c006d65edfb340b284fc2f12886",
+  "verification.json": "798bc78da13c8b4361256794bbc9cc9bcc0809d27e195d00646ea41ee3bef4ba"
+}
