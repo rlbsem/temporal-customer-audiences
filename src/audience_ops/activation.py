@@ -171,7 +171,14 @@ class Activation:
 
     def reconcile(self, principal, brand, repair=False):
         principal.require(brand, {"controller"})
-        remote = self.client.membership(brand)
+        try:
+            remote = self.client.membership(brand)
+        except Unknown as exc:
+            with connect(self.dsn) as c:
+                finding = [{"brand": brand, "reason": "destination_membership_unknown", "detail": str(exc)}]
+                c.execute("INSERT INTO reconciliations(brand,body) VALUES(%s,%s)", (brand, Jsonb(finding)))
+                audit(c, brand, principal.name, "reconciliation_unknown", "destination", {"reason": str(exc)})
+            raise
         with connect(self.dsn) as c:
             c.execute("INSERT INTO destination_observations(brand,body,hash) VALUES(%s,%s,%s)",
                       (brand, Jsonb(remote), digest(remote)))

@@ -45,7 +45,7 @@ class Client:
         status, receipt = self.request("/receipts/" + payload["effect_id"] + "?" + query)
         if status == 404 and receipt == {"contract": 1, "status": "absent", "effect_id": payload["effect_id"], "brand": payload["brand"]}:
             return None
-        if status != 200:
+        if status != 200 or not isinstance(receipt, dict):
             raise Unknown("receipt_readback_unknown")
         status, record = self.request("/records/" + payload["effect_id"] + "?" + query)
         expected = {k: payload[k] for k in ("brand", "person", "segment", "channel", "purpose", "seq", "desired", "effect_id")}
@@ -66,17 +66,18 @@ class Client:
 
     def membership(self, brand):
         status, body = self.request("/membership?" + urlencode({"brand": brand}))
-        if status != 200 or body.get("brand") != brand or body.get("contract") != 1:
+        if status != 200 or not isinstance(body, dict) or body.get("brand") != brand or body.get("contract") != 1:
             raise Unknown("membership_unknown")
         rows = body.get("rows")
-        if not isinstance(rows, list) or any(r.get("brand") != brand for r in rows):
+        if not isinstance(rows, list) or any(not isinstance(r, dict) or r.get("brand") != brand for r in rows):
             raise Unknown("membership_scope_mismatch")
         seen = set()
         for r in rows:
             if (set(r) != {"brand", "person", "segment", "channel", "purpose", "seq", "active", "effect"}
                     or r["segment"] not in {"engaged_trial", "quiet_trial"} or r["channel"] != "email"
                     or r["purpose"] != "trial_help" or type(r["seq"]) is not int or not 0 <= r["seq"] < 2**53
-                    or type(r["active"]) is not bool or (r["effect"] is not None and not re.fullmatch(r"[a-f0-9]{64}", r["effect"]))):
+                    or type(r["active"]) is not bool or (r["effect"] is not None and
+                    (not isinstance(r["effect"], str) or not re.fullmatch(r"[a-f0-9]{64}", r["effect"])) )):
                 raise Unknown("membership_contract_unknown")
             try:
                 identifier(r["person"])

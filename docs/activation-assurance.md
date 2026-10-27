@@ -24,6 +24,53 @@ Operating and receiver databases have different logins and no cross-database CON
 
 Runtime credentials are generated into private ignored working directories. They are not source evidence or public artifacts. Logs, connection strings and tokens must stay private.
 
+The two databases share a PostgreSQL server in this demonstration. Separate storage and logins establish a reconciliation boundary, not independent hardware availability or disaster recovery. The receiver supports only two declared audiences, email and `trial_help`; permissions for another channel or purpose never authorize these effects.
+
+```mermaid
+flowchart LR
+  S[Scoped synthetic source batches] --> J[(PostgreSQL immutable inbox)]
+  J --> C[Disposable per-brand SQLite evaluator]
+  C --> P[Immutable current and historical publications]
+  P --> E[Current eligibility SQL views]
+  G[Permission revision journal] --> E
+  E --> O[Exact approval and durable outbox]
+  O -->|Bounded HTTP POST| R[Independent receiver]
+  R --> D[(Separate PostgreSQL database)]
+  D -->|Receipt plus independent business record| O
+  E --> V[Read-only console]
+  D -->|Actual HTTP GET| V
+  J --> Q[Independent Python oracle]
+  Q --> V
+```
+
+SQL models are declared in [operating.sql](../src/audience_ops/operating.sql): `current_audience`, `activation_eligibility`, `permission_withdrawals`, `coverage_exceptions`, `historical_decisions`, `delivery_exceptions`, `source_fact_versions`, `destination_sync` and `reconciliation_findings`. `synchronization_status` counts historical outbox states, while `destination_sync` compares current authorization against the latest independently observed destination state. Neither silently treats an unobserved destination as synchronized. Plain governed SQL views fit this small operational model; an additional dbt execution layer would not improve its transaction or authorization boundary.
+
+## Reproduce and inspect
+
+The preferred Compose entry point and read-only verification command are in the [README](../README.md#run-the-operating-demonstration). Only the console is published, on loopback port 8596. PostgreSQL and receiver stay on the internal network. Separate private volumes carry the generated controller, receiver and console credentials. Application containers run without root or Linux capabilities and with read-only filesystems. The finite setup containers create only their own disposable demonstration state.
+
+For an installed local PostgreSQL distribution, use Python 3.12 and a fresh working directory:
+
+```bash
+python -m pip install -r requirements-operations.lock
+python -m pip install --no-deps --no-build-isolation -e .
+python -m playwright install chromium
+# Set PG_BIN to the directory containing initdb and pg_ctl, if not on PATH.
+python -m audience_ops.demo --workspace work/local-console-01 --serve
+```
+
+Stop with Ctrl+C. The owned local runner shuts down its receiver, console and PostgreSQL server, removing only its registered databases and logins. Private configuration and PostgreSQL logs under ignored `work/` must never be published. `OPS_TEST_ADMIN_DSN` is an alternative for a disposable localhost CI PostgreSQL service; do not point it at a shared or production database. It needs database/role creation rights solely to establish and remove the isolated test identities.
+
+Full regression, independent reconciliation and genuine browser capture:
+
+```bash
+python scripts/verify_operations.py --workspace work/acceptance-01 --output work/evidence-01
+```
+
+Both paths must be new. This command runs the original suite, adversarial operating tests, the complete original proof, the 36-check PostgreSQL/HTTP scenario, an independent source-based oracle, and the real console in Chromium. It captures desktop/mobile screenshots and WCAG A/AA checks with pinned axe-core. It never overwrites historical evidence. Automated accessibility checks supplement manual screenshot inspection; they do not establish universal accessibility.
+
+The independent oracle reconstructs latest fact revisions before filtering business time, evaluates left-exclusive windows and coverage assertions, and compares every published decision and current permission result. It does not call the original evaluator or accept its aggregate counts as proof. The wrong-grain regression deliberately exposes multiplicative joins while checking the proper scoped-person/audience grain.
+
 ## Execution status
 
 The original 58 SQLite regressions and 36 new end-to-end native PostgreSQL/HTTP scenario checks have executed locally. The scenario includes real process termination, lost acknowledgment, permission withdrawal/expiry, coverage expiry, historical correction and receiver drift. Full adversarial, browser, Docker and hosted results are reported separately when executed; no pending lane is a passing result.

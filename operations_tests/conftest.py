@@ -20,8 +20,3 @@ def primed(runtime):
     runtime.activation = Activation(runtime.config["dsn"], runtime.client)
     return runtime
 
-
-def approved(runtime, person="400", brand="atlas", segment="engaged_trial"):
-    row = runtime.activation.plan(actor("controller"), brand, person, segment, True)
-    runtime.activation.approve(actor("approver"), brand, row["id"], row["hash"])
-    return row

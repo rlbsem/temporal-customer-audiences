@@ -38,6 +38,7 @@ CREATE TABLE reconciliations(id bigserial PRIMARY KEY,brand text NOT NULL,body j
  observed_at timestamptz DEFAULT clock_timestamp());
 CREATE TABLE destination_observations(id bigserial PRIMARY KEY,brand text NOT NULL REFERENCES brands,
  body jsonb NOT NULL,hash text NOT NULL,observed_at timestamptz DEFAULT clock_timestamp());
+CREATE TABLE acceptance_reports(id text PRIMARY KEY,body jsonb NOT NULL,source_hash text NOT NULL);
 CREATE FUNCTION immutable_record() RETURNS trigger LANGUAGE plpgsql AS $$
  BEGIN RAISE EXCEPTION 'immutable_record'; END $$;
 CREATE TRIGGER immutable_inbox BEFORE UPDATE OR DELETE ON inbox FOR EACH ROW EXECUTE FUNCTION immutable_record();
@@ -46,6 +47,7 @@ CREATE TRIGGER immutable_decisions BEFORE UPDATE OR DELETE ON decisions FOR EACH
 CREATE TRIGGER immutable_permissions BEFORE UPDATE OR DELETE ON permissions FOR EACH ROW EXECUTE FUNCTION immutable_record();
 CREATE TRIGGER immutable_audit BEFORE UPDATE OR DELETE ON audit FOR EACH ROW EXECUTE FUNCTION immutable_record();
 CREATE TRIGGER immutable_destination_observation BEFORE UPDATE OR DELETE ON destination_observations FOR EACH ROW EXECUTE FUNCTION immutable_record();
+CREATE TRIGGER immutable_acceptance_report BEFORE UPDATE OR DELETE ON acceptance_reports FOR EACH ROW EXECUTE FUNCTION immutable_record();
 CREATE FUNCTION frozen_intent() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN
  IF (NEW.id,NEW.brand,NEW.person,NEW.segment,NEW.channel,NEW.purpose,NEW.seq,NEW.desired,NEW.payload,NEW.hash,NEW.authority)
  IS DISTINCT FROM (OLD.id,OLD.brand,OLD.person,OLD.segment,OLD.channel,OLD.purpose,OLD.seq,OLD.desired,OLD.payload,OLD.hash,OLD.authority)

@@ -1,0 +1,76 @@
+name: temporal-audience-assurance
+x-runtime: &runtime
+  build: .
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  mem_limit: 512m
+  tmpfs: [/tmp:size=128m,mode=1777]
+  networks: [isolated]
+services:
+  configure:
+    <<: *runtime
+    user: '0:0'
+    command: [python, -m, audience_ops.compose_setup, configure]
+    volumes: [postgres-secret:/secrets]
+  postgres:
+    image: postgres:17.6@sha256:00bc86618629af00d2937fdc5a5d63db3ff8450acf52f0636ec813c7f4902929
+    depends_on:
+      configure: {condition: service_completed_successfully}
+    environment:
+      POSTGRES_PASSWORD_FILE: /secrets/postgres-password
+    volumes: [postgres-data:/var/lib/postgresql/data, 'postgres-secret:/secrets:ro']
+    networks: [isolated]
+    mem_limit: 768m
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U postgres -d postgres]
+      interval: 2s
+      timeout: 3s
+      retries: 40
+  initialize:
+    <<: *runtime
+    user: '0:0'
+    depends_on:
+      postgres: {condition: service_healthy}
+    command: [python, -m, audience_ops.compose_setup, initialize]
+    volumes: ['postgres-secret:/secrets:ro', controller-config:/controller, receiver-config:/receiver, console-config:/console]
+  receiver:
+    <<: *runtime
+    user: '10002:10002'
+    depends_on:
+      initialize: {condition: service_completed_successfully}
+    command: [python, -m, audience_ops.service, receiver, --config, /receiver/receiver.json, --host, 0.0.0.0, --port, '8331']
+    volumes: ['receiver-config:/receiver:ro']
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8331/health',timeout=2)"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  demo:
+    <<: *runtime
+    depends_on:
+      receiver: {condition: service_healthy}
+    command: [python, -m, audience_ops.compose_setup, demo]
+    # Trusted acceptance harness alone sees both private configurations for fault injection.
+    volumes: ['controller-config:/controller:ro', 'receiver-config:/receiver:ro']
+  console:
+    <<: *runtime
+    user: '10003:10003'
+    depends_on:
+      demo: {condition: service_completed_successfully}
+    volumes: ['console-config:/console:ro']
+    ports: ['127.0.0.1:8596:8596']
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8596/health',timeout=2)"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+networks:
+  isolated: {internal: true}
+volumes:
+  postgres-data:
+  postgres-secret:
+  controller-config:
+  receiver-config:
+  console-config:

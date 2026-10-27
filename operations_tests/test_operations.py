@@ -14,7 +14,7 @@ from audience_ops.scenario import actor, run
 from temporal_audiences.contracts import Refused, digest
 from temporal_audiences.fixtures import BASE, DAY, fact
 
-from conftest import approved
+from operations_tests.helpers import approved
 
 
 def test_executed_end_to_end_with_real_process_termination_and_reconciliation(runtime):
@@ -177,8 +177,8 @@ def test_sql_views_use_correct_grain_despite_multiple_permission_revisions(prime
     primed.ops.permission(actor("privacy"), "atlas", "400", 2, True, BASE, BASE + 20 * DAY)
     with connect(primed.config["dsn"]) as c:
         correct = c.execute("SELECT count(*) AS n FROM activation_eligibility WHERE brand='atlas'").fetchone()["n"]
-        naive = c.execute("SELECT count(*) AS n FROM current_audience a JOIN permissions p USING(brand,person) WHERE a.brand='atlas'").fetchone()["n"]
-        assert correct == 18 and naive > 12
+        naive = c.execute("SELECT count(*) AS n FROM current_audience a JOIN permissions p USING(brand,person) WHERE a.brand='atlas' AND a.person='400'").fetchone()["n"]
+        assert correct == 18 and naive == 4
         assert c.execute("SELECT count(*) AS n FROM destination_sync WHERE status='unobserved'").fetchone()["n"] == 20
     assert check(primed.config["dsn"], "atlas")["eligibility_rows"] == 18
 
