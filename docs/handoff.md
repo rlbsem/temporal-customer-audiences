@@ -1,4 +1,4 @@
-# Temporal Customer Audiences — release and verification
+# Temporal Customer Audiences: release and verification
 
 ## What the engine proves
 
